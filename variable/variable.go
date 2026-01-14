@@ -1,5 +1,10 @@
 package main
-import "fmt"
+import (
+	"fmt"
+	
+	"package_scope/packag_scope"
+
+)
 
 func add(a int,b int)int{
 	sum:= a+b
@@ -12,6 +17,21 @@ func add(a int,b int)int{
 	}else {
 		return sum
 	}
+	
+}
+func sub_mul(a int,b int)(int,int){
+	
+	switch true{  // switch e 2ta variable is not allowed 
+	case a>b:
+		return a-b,a*b
+	case b>a:
+		return b-a,a*b
+	default:
+		return a-b+1,a*b		
+	}
+	
+
+	
 	
 }
 
@@ -28,4 +48,11 @@ func main(){
 	fmt.Println(b)
 	sum:=add(a,b)
 	fmt.Println("sum function=>",sum)
+	sub,mul:=sub_mul(a,b)
+	fmt.Println("sub function=>",sub,mul)
+
+
+	addSUm:=packag_scope.Add(10,20)//function Add package packag_scope এর অংশ।
+	fmt.Println("add from package scope=>",addSUm)
+
 }
