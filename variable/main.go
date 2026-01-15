@@ -4,7 +4,9 @@ import (
 	
 	"package_scope/packag_scope"
 
+	"package_scope/variableShadowing"
 )
+
 
 func add(a int,b int)int{
 	sum:= a+b
@@ -55,4 +57,7 @@ func main(){
 	addSUm:=packag_scope.Add(10,20)//function Add package packag_scope এর অংশ।
 	fmt.Println("add from package scope=>",addSUm)
 
+	// variable shadowing
+	fmt.Println("variable shadowing example=>",)
+	variableShadowing.Shadow()
 }
