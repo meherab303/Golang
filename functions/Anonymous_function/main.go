@@ -17,11 +17,7 @@ func main() {
 		fmt.Println(a+b)
 	}(4,5)
 
-	for i := 0; i < 3; i++ {
-    go func() {
-        fmt.Println(i)
-    }()
-}
+	
 
 
 	/*
