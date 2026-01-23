@@ -1,13 +1,11 @@
-package variableShadowing
-
+package main
 import "fmt"
 
 
 //Go তে := (short variable declaration) শুধুমাত্র function এর ভিতরে ব্যবহার করা যায়
 //package level এ := একদমই allowed না
-
 var x int = 10
-func Shadow(){
+func main(){
 	fmt.Println(x) 
 	age:=25
 	if age>20{
