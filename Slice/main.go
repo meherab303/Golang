@@ -15,6 +15,12 @@ import "fmt"
 
 */
 
+func changeSlice(a []int) []int{
+	a[0]=10
+	a=append(a, 11)
+	return a
+}
+
 func main(){
 	//slice from array
 	array1:=[5]int{1,2,3,4,5}
@@ -40,7 +46,8 @@ func main(){
 	slice5:=make([]int,3,5)
 	slice5[2]=30
 
-	// slice[3]=20 eita dile runtine error ashbe karon Go index access korar shomoi length dekhe .capacity dekhena .capacity dekhe append korar time e .
+	// slice[3]=20 eita dile runtime error ashbe .out of index range.karon Go index access er time e length check kore.capacity check korena
+	
 
 	fmt.Println(slice5)
 	fmt.Println(len(slice5))
@@ -69,6 +76,44 @@ func main(){
 	fmt.Println(cap(slice7))
 
 
+	//interview q-1
+
+	var x []int
+	x=append(x, 1)
+	x=append(x, 2)
+	x=append(x, 3)
+
+	y:=x  //len=3,cap=4
+
+	x=append(x, 4)
+	y=append(y, 5)
+
+	x[0]=10
+
+	fmt.Println("x==>",x)
+	fmt.Println("y==>",y)
+
+	//interview q-2
+
+	slice8:=[]int{1,2,3,4,5}
+	slice8=append(slice8,6)
+	slice8=append(slice8,7)
+
+	a:=slice8[4:] //len=3 hbe,capacity hbe=6
+
+	z:=changeSlice(a)
+
+	fmt.Println("x==>",slice8)
+	fmt.Println("y==>",z)
+	
+
+	// fmt.Println(slice8[7])--> runtime error ashbe karon Go index access er time e length check kore.capacity check korena
+	
+
+	fmt.Println(slice8[0:10])  //slice8[0:10] হলো slice expression। এটা slice8 থেকে index 0 থেকে 9 পর্যন্ত element নিয়ে নতুন slice বানায়। jeheto slice8 er capacity 10 tai 0 theke 10 er aag porjnto new slice banate parbe.jeigulai value nei oigulai by default 0 hbe.eikhane index 7 er por bakigula 0 hobe
+	fmt.Println(cap(slice8[0:10])) //new capacity=old capacity -start index
+	fmt.Println(len(slice8[0:10])) //length = end - start
+	
 
 }
 
@@ -82,7 +127,17 @@ func main(){
 
  3)capacity--->array te slice er start index theke array er baki full length porjonto
  ==>cap(slice)
+
+ **i) when slice from array:
  ==>capacity = array length - start index
+ reason:array length=array capacity
+
+ **ii) when slice from slice
+ ==>new capacity=old capacity -start index
+
+ **iii) slice expression (slice[start:end]) rule: 0 ≤ start ≤ end ≤ cap(slice)
+
+ **iv) Go Index Access Rule : Index Access er time e length check kore . capacity check korena.length er shoman ba boro index kokhonoi access kora jabena and value o boshano jabena 
 
  */
 
